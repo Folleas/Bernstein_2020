@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pvl
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 3Gi
+  storageClassName: manual
+  hostPath:
+    path: "/mnt/data"
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: postgres-pvclm
+spec:
+    storageClassName: manual
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 3Gi
